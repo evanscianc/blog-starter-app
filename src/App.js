@@ -1,22 +1,24 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import Nav from "./Nav";
 import Article from "./Article";
-import { fetchTitles } from "./articleService";
+import { fetchArticles } from "./articleService";
+import "./App.css";
 
 export default function App() {
+  const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState(null);
+
+  // This is a trivial app, so just fetch all the articles once.
+  // A real app would do pagination.
   useEffect(() => {
-    setTitles(
-      fetchTitles().map((article) => ({ id: article.id, title: article.title }))
-    );
+    fetchArticles().then(setArticles);
   }, []);
 
-  const [titles, setTitles] = useState([]);
-  const [articleId, setArticleId] = useState(null);
   return (
     <div className="App">
-      <Nav titles={titles} setArticleId={setArticleId} />
-      <Article articleId={articleId} />
+      <header>Blog</header>
+      <Nav articles={articles} setArticle={setArticle} />
+      <Article article={article} />
     </div>
   );
 }
