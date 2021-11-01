@@ -6,6 +6,8 @@
 // Cloud Firestore, each article is a document whose id is "outside" the
 // document data, and each of the service functions are asynchronous.
 
+import { randomUUID } from "crypto";
+
 const articles = {
   1: {
     date: new Date(2021, 2, 16),
@@ -20,17 +22,13 @@ const articles = {
   },
   2: {
     date: new Date(2021, 9, 24),
-    title: "React is interesting",
-    body: "Takes time to learn Firebase, right?",
+    title: "Hello Everyone",
+    body: "It is a good day to learn React and Firebase",
   },
 };
 
 export async function createArticle({ title, body }) {
-  articles[Object.keys(articles) + 1] = {
-    title,
-    body,
-    date: new Date(),
-  };
+  return { id: Math.random(), title, body, date: new Date() };
 }
 
 export async function fetchArticles() {
