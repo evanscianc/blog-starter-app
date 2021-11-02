@@ -50,3 +50,9 @@ article .date {
 article .body {
   white-space: break-spaces;
 }
+
+.error {
+  background-color: red;
+  color: gold;
+  padding: 5px;
+}

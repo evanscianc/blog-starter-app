@@ -11,16 +11,20 @@ export default function App() {
   const [writing, setWriting] = useState(null);
 
   // This is a trivial app, so just fetch all the articles once, when
-  // the app is loaded. A real app would do pagination.
+  // the app is loaded. A real app would do pagination. Note that
+  // "fetchArticles" is what gets the articles from the service and
+  // then "setArticles" writes them into the React state.
   useEffect(() => {
     fetchArticles().then(setArticles);
   }, []);
 
+  // Update the "database" *then* update the internal React state. These
+  // two steps are definitely necessary.
   function addArticle({ title, body }) {
-    // Update the "database" then update the internal React state
     createArticle({ title, body }).then((article) => {
       setArticle(article);
       setArticles([article, ...articles]);
+      setWriting(false);
     });
   }
 
@@ -31,7 +35,7 @@ export default function App() {
       </header>
       <Nav articles={articles} setArticle={setArticle} />
       {writing ? (
-        <ArticleEntry setWriting={setWriting} addArticle={addArticle} />
+        <ArticleEntry addArticle={addArticle} />
       ) : (
         <Article article={article} />
       )}

@@ -1,15 +1,17 @@
+// This service completely hides the data store from the rest of the app.
+// No other part of the app knows how the data is stored. If anyone wants
+// to read or write data, they have to go through this service.
+
 // For this starter code, we use mock data, that is, data in memory that
 // is pretty arbitrary. The service functions to create and fetch articles
 // will just work on this fake data in memory.
 
-// As we intend the starter code to be extended into an app that uses
-// Cloud Firestore, each article is a document whose id is "outside" the
-// document data, and each of the service functions are asynchronous.
-
-import { randomUUID } from "crypto";
+// This intent is for you to fork this starter code and then replace the
+// bodies of the service functions with code that fetches from a *real*
+// database like Firebase Firestore.
 
 const articles = {
-  1: {
+  sdkjfhshfskdlshjf: {
     date: new Date(2021, 2, 16),
     title: "There’s a fair tomorrow",
     body: `
@@ -20,7 +22,7 @@ const articles = {
       .trim()
       .replace(/\n */g, "\n"),
   },
-  2: {
+  asjkdhalfkjsdjfhsd: {
     date: new Date(2021, 9, 24),
     title: "Hello Everyone",
     body: "It is a good day to learn React and Firebase",
@@ -28,13 +30,14 @@ const articles = {
 };
 
 export async function createArticle({ title, body }) {
+  // As this is just fake data for messing around, we'll throw in a quick
+  // and unreliable database id. In a real app, the id should be generated
+  // by the database itself (or you can use UUIDs).
   return { id: Math.random(), title, body, date: new Date() };
 }
 
 export async function fetchArticles() {
+  // In storage the ids are separated from the data, but in this function
+  // we are going to combine the id and the data together.
   return Object.entries(articles).map(([id, data]) => ({ id, ...data }));
-}
-
-export async function fetchArticleById(id) {
-  return articles[id];
 }
