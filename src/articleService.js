@@ -14,18 +14,17 @@ const articles = {
   sdkjfhshfskdlshjf: {
     date: new Date(2021, 2, 16),
     title: "There’s a fair tomorrow",
-    body: `
-      Is a mháithrín an ligfidh tú chun aonaigh mé
-      Is a mhuirnín óg ná healaí é
-      Beidh aonach amárach in gContae an Chláir
-      Cén mhaith domh é ní bheidh mé ann`
-      .trim()
-      .replace(/\n */g, "\n"),
+    body: [
+      "Is a mháithrín an ligfidh tú chun aonaigh mé",
+      "Is a mhuirnín óg ná healaí é",
+      "Beidh aonach amárach in gContae an Chláir",
+      "Cén mhaith domh é ní bheidh mé ann`",
+    ].join("\n"),
   },
   asjkdhalfkjsdjfhsd: {
     date: new Date(2021, 9, 24),
     title: "Hello Everyone",
-    body: "It is a good day to learn React and Firebase",
+    body: "It is a good day to learn React and Firebase\n".repeat(10),
   },
 };
 
