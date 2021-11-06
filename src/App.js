@@ -63,7 +63,7 @@ export default function App() {
             New Article
           </button>
         )}
-        <div className="pageTitle"> Travel Blog </div>
+        <div className="pageTitle"> Awesome Travel Blog </div>
         {!user ? <SignIn /> : <SignOut />}
       </header>
 
@@ -78,6 +78,7 @@ export default function App() {
       ) : (
         <Article article={article} />
       )}
+      <footer> </footer>
     </div>
   )
 }

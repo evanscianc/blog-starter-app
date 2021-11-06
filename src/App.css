@@ -1,7 +1,7 @@
 .App {
   overflow: scroll;
   align-content: center;
-  background: rgb(29, 185, 84);
+  background-size: cover;
   background: rgb(29, 185, 84);
   background: linear-gradient(
     90deg,
@@ -9,8 +9,7 @@
     rgba(29, 185, 84, 1) 56%,
     rgba(255, 255, 255, 1) 100%
   );
-  height: 100%;
-  background-size: cover;
+  min-height: 100%;
 }
 
 header {
@@ -25,6 +24,13 @@ header {
   font-size: 32px;
   align-items: center;
   text-align: center;
+}
+
+footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-bottom: 400px;
 }
 
 form {
@@ -72,9 +78,17 @@ article .body {
   font-size: 14px;
 }
 
+.pageTitle {
+  margin-left: 150px;
+}
+
 .newArticle {
   height: 100%;
   font-size: 16px;
+}
+
+.welcomeMsg {
+  font-size: 24px;
 }
 
 .error {
